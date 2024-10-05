@@ -1,0 +1,112 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>UZB</title>
+  <link href="{% static 'img/favicon.png'%}" rel="icon">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+        </ul>
+
+      
+    
+      </aside><!-- End Sidebar-->
+
+
+      <main id="main" class="main">
+        <div class="pagetitle">
+          <h1>{{axoli.xizmat.mahalla.tuman.tashkilot.name}}/{{axoli.xizmat.mahalla.tuman.name}}/{{axoli.xizmat.mahalla.name}}/{{axoli.xizmat.name}}/{{axoli.name}}</h1>
+        </div><!-- End Page Title -->
+    
+        <section class="section">
+            <div class="row">
+              <div class="col-lg-6">
+      
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Ma'lumot</h5>
+      
+                    <!-- Default Accordion -->
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h5 class="card-title">Shaxs ma'lumotlari</h5>
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <strong>{{axoli.name}}</strong><br>
+                            <strong>{{axoli.lastname}}</strong> <br>
+                            {{axoli.phone}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h5 class="card-title">Xizmat turi</h5>
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <strong>{{axoli.xizmat.name}}</strong>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h5 class="card-title">Natija</h5>
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <strong style="color: green;">{{axoli.status}}</strong>  <br>
+                            {{axoli.discreption}}
+                        </div>
+                        </div>
+                      </div>
+                    </div><!-- End Default Accordion Example -->
+      
+                  </div>
+                </div>
+      
+              </div>
+            </div>
+          </section>
+      
+    
+      </main><!-- End #main -->
+    
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/apexcharts/apexcharts.min.js'%}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static 'vendor/chart.js/chart.umd.js'%}"></script>
+<script src="{% static 'vendor/echarts/echarts.min.js'%}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js'%}"></script>
+
+</body>
+</html>
+{% endblock %}

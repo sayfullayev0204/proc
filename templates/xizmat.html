@@ -1,0 +1,100 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>UZB</title>
+  <link href="{% static 'img/favicon.png'%}" rel="icon">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+              </a>
+            </li><!-- End Dashboard Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="">
+                  <i class="bi bi-people"></i>
+                  <span>Salimovlar xonadoni</span>
+                </a>
+              </li><!-- End Login Page Nav -->
+        </ul>
+
+      
+    
+      </aside><!-- End Sidebar-->
+
+
+      <main id="main" class="main">
+        <div class="pagetitle">
+          <h1>{{xizmat.mahalla.tuman.tashkilot.name}}/{{xizmat.mahalla.tuman.name}}/{{xizmat.mahalla.name}}/{{xizmat.name}}</h1>
+        </div><!-- End Page Title -->
+    
+        <section class="section">
+          <div class="row">
+            <div class="col-lg-12">
+    
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Aholilar</h5>
+                  <!-- Table with stripped rows -->
+                  <table class="table datatable">
+                    <thead>
+                      <tr>
+                        <th>
+                          <b>Ismi</b>
+                        </th>
+                        <th>Familyasi</th>
+                        <th>Tel nomer</th>
+                        <th >Status</th>
+                        <th>Batafsil</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in axolis %}
+                      <tr>
+                        <td>{{i.name}}</td>
+                        <td>{{i.lastname}}</td>
+                        <td>{{i.phone}}</td>
+                        <td style="color: green;">{{i.status}}</td>
+                        <td><a href="{% url 'axoli_detail' i.id %}" class="nav-link collapsed" style="text-align: center;font-size: 20px; color: blue; font-weight: bold;"><i class="bi bi-eye"></i></a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+    
+                </div>
+              </div>
+    
+            </div>
+          </div>
+        </section>
+    
+      </main><!-- End #main -->
+    
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/apexcharts/apexcharts.min.js'%}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static 'vendor/chart.js/chart.umd.js'%}"></script>
+<script src="{% static 'vendor/echarts/echarts.min.js'%}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js'%}"></script>
+
+</body>
+</html>
+{% endblock %}

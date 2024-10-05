@@ -1,0 +1,130 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>UZB</title>
+  <link href="{% static 'img/favicon.png'%}" rel="icon">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+              </a>
+            </li><!-- End Dashboard Nav -->
+            {% for xizmat in xizmatlar %}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{% url 'xizmat' xizmat.id %}">
+                  <i class="bi bi-list-check"></i>
+                  <span>{{ xizmat.name }}</span>
+                </a>
+              </li><!-- End Login Page Nav -->
+              {% endfor %}
+        </ul>
+
+      
+    
+      </aside><!-- End Sidebar-->
+    
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>{{mahalla.tuman.tashkilot.name}}/{{mahalla.tuman.name}}/{{mahalla.name}}</h1>
+  </div><!-- End Page Title -->
+<div class="message-container">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+                <section class="section dashboard">
+                  <div class="row">
+              
+                    <!-- Left side columns -->
+                    <div class="col-lg-8">
+                      <div class="row">
+              
+                        <!-- Sales Card -->
+                        <div class="col-xxl-4 col-md-6">
+                          <div class="card info-card sales-card">
+                            <div class="card-body">
+                              <h5 class="card-title">Xizmatlar soni <span>| ummimiy soni</span></h5>
+                              <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                  <i class="bi bi-pin-map-fill"></i>
+                                </div>
+                                <div class="ps-3">
+                                  <h6 class="text-success">{{xizmats}}</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- End Sales Card -->
+              
+                        <!-- Revenue Card -->
+                        <div class="col-xxl-4 col-md-6">
+                          <div class="card info-card revenue-card">
+                            <div class="card-body">
+                              <h5 class="card-title">Xonadon soni <span>| Ummimiy soni</span></h5>
+                              <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                  <i class="ri-home-3-fill"></i>
+                                </div>
+                                <div class="ps-3">
+                                  <h6>45</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- End Revenue Card -->
+              
+                        <!-- Customers Card -->
+                        <div class="col-xxl-4 col-xl-12">
+                          <div class="card info-card customers-card">
+                            <div class="card-body">
+                              <h5 class="card-title">Axoli soni <span>|<br> Umumiy soni</span></h5>
+                              <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                  <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                  <h6>120</h6>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- End Customers Card -->
+              
+                  </div>
+                </section>
+</main><!-- End #main -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/apexcharts/apexcharts.min.js'%}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static 'vendor/chart.js/chart.umd.js'%}"></script>
+<script src="{% static 'vendor/echarts/echarts.min.js'%}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js'%}"></script>
+
+</body>
+</html>
+{% endblock %}
