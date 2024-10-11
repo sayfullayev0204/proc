@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Tashkilot, Tuman, Xizmatlar, Axoli, Mahalla
+from .models import Tashkilot, Tuman, Xizmatlar, Axoli, Mahalla,Users
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -27,7 +27,8 @@ def tuman_view(request, tuman_id):
 def mahalla_view(request, mahalla_id):
     mahalla = get_object_or_404(Mahalla, id=mahalla_id)
     xizmatlar = Xizmatlar.objects.filter(mahalla=mahalla)
-    return render(request, 'mahalla.html', {'mahalla': mahalla, 'xizmatlar': xizmatlar, 'xizmats':xizmatlar.count()})
+    users = Users.objects.all()
+    return render(request, 'mahalla.html', {'mahalla': mahalla, 'xizmatlar': xizmatlar,'users':users, 'xizmats':xizmatlar.count()})
 
 # View for showing axoli who have used a xizmat
 @login_required
@@ -54,4 +55,3 @@ def custom_login_view(request):
 def axoli_detail_view(request, axoli_id):
     axoli = get_object_or_404(Axoli, id=axoli_id)
     return render(request, 'info.html', {'axoli': axoli})
-
