@@ -38,7 +38,7 @@ class Axoli(models.Model):
     status = models.CharField(max_length=225)
     discreption = models.TextField()
     passport = models.CharField(max_length=255)
-    
+    birth = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
