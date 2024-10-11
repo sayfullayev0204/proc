@@ -28,6 +28,31 @@
                   <i class="bi bi-people"></i>
                   <span>Salimovlar xonadoni</span>
                 </a>
+                <a class="nav-link collapsed" href="">
+                  <i class="bi bi-people"></i>
+                  <span>Karimovlar xonadoni</span>
+                </a>
+                <a class="nav-link collapsed" href="">
+                  <i class="bi bi-people"></i>
+                  <span>Asadovlar xonadoni</span>
+                </a>
+                <a class="nav-link collapsed" href="">
+                  <i class="bi bi-people"></i>
+                  <span>Sobirovlar xonadoni</span>
+                </a>
+                <a class="nav-link collapsed" href="">
+                  <i class="bi bi-people"></i>
+                  <span>Aliqulovlar xonadoni</span>
+                </a>
+                <a class="nav-link collapsed" href="">
+                  <i class="bi bi-people"></i>
+                  <span>Hoshimovlar xonadoni</span>
+                </a>
+                <a class="nav-link collapsed" href="">
+                  <i class="bi bi-people"></i>
+                  <span>Jo'rayevlar xonadoni</span>
+                </a>
+
               </li><!-- End Login Page Nav -->
         </ul>
 
@@ -47,13 +72,13 @@
     
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Aholilar</h5>
+                  <h5 class="card-title">Salimovlar xonadoni oila a'zolari</h5>
                   <!-- Table with stripped rows -->
                   <table class="table datatable">
                     <thead>
                       <tr>
-                        <th>
-                            I.F.O</th>
+                        <th>I.F.O</th>
+                        <th>Roli</th>
                         <th>Passport</th>
                         <th>T.Yil</th>
                         <th>Tel nomer</th>
@@ -65,11 +90,24 @@
                         {% for i in axolis %}
                       <tr>
                         <td>{{i.name}} {{i.lastname}}</td>
+                        <td>{{i.role}}</td>
                         <td>{{i.passport}}</td>
                         <td>{{i.birth}}</td>
                         <td>{{i.phone}}</td>
-                        <td style="color: green;">{{i.status}}</td>
-                        <td><a href="{% url 'axoli_detail' i.id %}" class="nav-link collapsed" style="text-align: center;font-size: 20px; color: blue; font-weight: bold;"><i class="bi bi-eye"></i></a></td>
+                        {% if i.status%}
+                        <td style="color: green;">
+                          Murojat qilgan
+                        </td>
+                          {% else %}
+                        <td>
+                          Murojat qilmagan
+                        </td>
+                        {% endif %}
+                        <td>
+                          {% if i.status %}
+                          <a href="{% url 'axoli_detail' i.id %}" class="nav-link collapsed" style="text-align: center;font-size: 20px; color: blue; font-weight: bold;"><i class="bi bi-eye"></i></a>
+                          {% endif %}
+                        </td>
                       </tr>
                       {% endfor %}
                     </tbody>

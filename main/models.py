@@ -35,10 +35,21 @@ class Axoli(models.Model):
     name = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
     phone = models.CharField(max_length=225)
-    status = models.CharField(max_length=225)
+    status = models.CharField(max_length=225, blank=True)
     discreption = models.TextField()
     passport = models.CharField(max_length=255)
     birth = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
+class Users(models.Model):
+    name = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
+    phone = models.CharField(max_length=225)
+    status = models.CharField(max_length=225, blank=True)
+    passport = models.CharField(max_length=255)
+    birth = models.CharField(max_length=255)
     def __str__(self):
         return self.name

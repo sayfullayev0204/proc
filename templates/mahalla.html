@@ -154,7 +154,69 @@
                   </div>
                 </section>
 </main><!-- End #main -->
-
+      <main id="main" class="main">
+        <div class="pagetitle">
+          <h1>{{xizmat.mahalla.tuman.tashkilot.name}}/{{xizmat.mahalla.tuman.name}}/{{xizmat.mahalla.name}}/{{xizmat.name}}</h1>
+        </div><!-- End Page Title -->
+    
+        <section class="section">
+          <div class="row">
+            <div class="col-lg-12">
+    
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Salimovlar xonadoni oila a'zolari</h5>
+                  <!-- Table with stripped rows -->
+                  <table class="table datatable">
+                    <thead>
+                      <tr>
+                        <th>I.F.O</th>
+                        <th>Roli</th>
+                        <th>Passport</th>
+                        <th>T.Yil</th>
+                        <th>Tel nomer</th>
+                        <th >Status</th>
+                        <th>Batafsil</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in axolis %}
+                      <tr>
+                        <td>{{i.name}} {{i.lastname}}</td>
+                        <td>{{i.role}}</td>
+                        <td>{{i.passport}}</td>
+                        <td>{{i.birth}}</td>
+                        <td>{{i.phone}}</td>
+                        {% if i.status%}
+                        <td style="color: green;">
+                          Murojat qilgan
+                        </td>
+                          {% else %}
+                        <td>
+                          Murojat qilmagan
+                        </td>
+                        {% endif %}
+                        <td>
+                          {% if i.status %}
+                          <a href="{% url 'axoli_detail' i.id %}" class="nav-link collapsed" style="text-align: center;font-size: 20px; color: blue; font-weight: bold;"><i class="bi bi-eye"></i></a>
+                          {% endif %}
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+    
+                </div>
+              </div>
+    
+            </div>
+          </div>
+        </section>
+    
+      </main><!-- End #main -->
+    
+      
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->

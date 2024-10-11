@@ -54,3 +54,4 @@ def custom_login_view(request):
 def axoli_detail_view(request, axoli_id):
     axoli = get_object_or_404(Axoli, id=axoli_id)
     return render(request, 'info.html', {'axoli': axoli})
+
